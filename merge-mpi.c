@@ -78,6 +78,7 @@ int main(int argc, char** argv) {
 		}
 	
 	/********** Clean up rest **********/
+	free(original_array);
 	free(sub_array);
 	free(tmp_array);
 	
