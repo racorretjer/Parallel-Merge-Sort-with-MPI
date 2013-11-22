@@ -22,8 +22,8 @@ int main(int argc, char** argv) {
 		
 		}
 
-	print("\n");
-	print("\n");
+	printf("\n");
+	printf("\n");
 	
 	/********** Initialize MPI **********/
 	int world_rank;
@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 	
 	/********** Send each subarray to each process **********/
 	int *sub_array = malloc(size * sizeof(int));
-	MPI_Scatter(original_array, MPI_INT, sub_array, MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Scatter(original_array, size, MPI_INT, sub_array, size, MPI_INT, 0, MPI_COMM_WORLD);
 	
 	/********** Perform the mergesort on each process **********/
 	int *tmp_array = malloc(size * sizeof(int));
