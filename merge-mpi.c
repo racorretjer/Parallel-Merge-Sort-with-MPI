@@ -14,11 +14,16 @@ int main(int argc, char** argv) {
 	
 	int c;
 	srand(time(NULL));
+	printf("This is the unsorted array: ");
 	for(c = 0; c < n; c++) {
 		
 		original_array[c] = rand() % n;
+		printf("%d ", original_array[c]);
 		
 		}
+
+	print("\n");
+	print("\n");
 	
 	/********** Initialize MPI **********/
 	int world_rank;
@@ -33,7 +38,7 @@ int main(int argc, char** argv) {
 	
 	/********** Send each subarray to each process **********/
 	int *sub_array = malloc(size * sizeof(int));
-	MPI_Scatter(original_array, size, MPI_INT, sub_array, size, MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Scatter(original_array, MPI_INT, sub_array, MPI_INT, 0, MPI_COMM_WORLD);
 	
 	/********** Perform the mergesort on each process **********/
 	int *tmp_array = malloc(size * sizeof(int));
@@ -63,6 +68,7 @@ int main(int argc, char** argv) {
 			
 			}
 			
+		printf("\n");
 		printf("\n");
 			
 		/********** Clean up root **********/
