@@ -3,6 +3,7 @@
 #include <time.h>
 #include <mpi.h>
 
+void merge(int *, int *, int, int, int);
 void mergeSort(int *, int *, int, int);
 
 int main(int argc, char** argv) {
